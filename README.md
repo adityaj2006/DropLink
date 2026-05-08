@@ -1,4 +1,4 @@
-# DropLink — P2P File Transfer
+# DropLink - P2P File Transfer
 
 A browser-based peer-to-peer file transfer app using **React**, **WebRTC**, and **Socket.IO**.
 
