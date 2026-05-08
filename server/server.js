@@ -6,10 +6,12 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: [
+      "http://localhost:5173",
+      "https://drop-link-p2p.vercel.app"
+    ],
     methods: ["GET", "POST"],
   },
 });
