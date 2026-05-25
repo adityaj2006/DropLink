@@ -1,11 +1,21 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 
 const CHUNK_SIZE = 16 * 1024; // 16KB
-
 const ICE_SERVERS = {
   iceServers: [
     { urls: "stun:stun.l.google.com:19302" },
     { urls: "stun:stun1.l.google.com:19302" },
+    // Free TURN server - fixes same-network issue
+    {
+      urls: "turn:openrelay.metered.ca:80",
+      username: "openrelayproject",
+      credential: "openrelayproject",
+    },
+    {
+      urls: "turn:openrelay.metered.ca:443",
+      username: "openrelayproject",
+      credential: "openrelayproject",
+    },
   ],
 };
 
