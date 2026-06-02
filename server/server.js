@@ -89,3 +89,17 @@ const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Signaling server running on http://localhost:${PORT}`);
 });
+
+// Keep-alive ping to prevent Render free tier sleep
+const https = require("https");
+setInterval(() => {
+  https.get("https://droplink-yxpt.onrender.com/health", (res) => {
+    console.log(`[KeepAlive] ${new Date().toISOString()} - Status: ${res.statusCode}`);
+  }).on("error", (e) => {
+    console.error("[KeepAlive] Error:", e.message);
+  });
+}, 10 * 60 * 1000); // ping every 10 minutes
+
+
+
+
